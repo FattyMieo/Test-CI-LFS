@@ -1,0 +1,18 @@
+language: objective-c
+osx_image: xcode9.3
+rvm:
+- 2.2
+before_install:
+- chmod a+x ./install.sh
+- chmod a+x ./build.sh
+install:
+- ./install.sh
+script:
+- ./build.sh
+deploy:
+  provider: releases
+  api_key: "$GITHUB_OAUTH_TOKEN"
+  file: "$(pwd)/Build/Test-Unity-CI.zip"
+  skip_cleanup: true
+  on:
+    tags: true

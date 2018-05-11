@@ -1,0 +1,57 @@
+#! /bin/sh
+
+# The steps
+# 1. Get Visual Studio Build Tools
+# 2. Get Unreal Engine from GitHub
+# 3. Build Unreal Engine with Build Tools
+# 4. Build project with Unreal Engine
+
+# Problems
+# - Cannot figure out how to get and use VS Build Tools (in OS X it cannot run .exe)
+# - Haven't try to build project with Unreal Engine under command-line
+
+UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
+UE_INSTALL_DIR=/Applications/UnrealEngine
+
+VS_BASE_URL=https://download.visualstudio.microsoft.com/download/pr/12221253
+VS_HASH=e64d79b40219aea618ce2fe10ebd5f0d
+VS_NAME="vs_BuildTools.exe"
+VS_INSTALL_DIR=/Applications/VisualStudio
+
+# Download the build tool
+curl -O `basename "$VS_NAME"` "$VS_BASE_URL/$VS_HASH/$VS_NAME"
+chmod +x ./$VS_NAME
+
+git clone -depth=1 $UE_REPOSITORY $UE_INSTALL_DIR
+sh $UE_INSTALL_DIR/GenerateProjectFiles.sh
+./$VS_NAME
+$UE_INSTALL_DIR/ UE$.sln
+
+### Old Scripts ###
+#BASE_URL=https://download.unity3d.com/download_unity
+#HASH=a9f86dcd79df
+#VERSION=2017.3.0f3
+#
+#download() {
+#  file=$1
+#  url="$BASE_URL/$HASH/$package"
+#
+#  echo "Downloading from $url: "
+#  curl -o `basename "$package"` "$url"
+#}
+#
+#install() {
+#  package=$1
+#  download "$package"
+#
+#  echo "Installing "`basename "$package"`
+#  sudo installer -dumplog -package `basename "$package"` -target /
+#}
+#
+## See $BASE_URL/$HASH/unity-$VERSION-$PLATFORM.ini for complete list
+## of available packages, where PLATFORM is `osx` or `win`
+#
+#install "MacEditorInstaller/Unity-$VERSION.pkg"
+#install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
+##install "MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor-$VERSION.pkg"
+##install "MacEditorTargetInstaller/UnitySetup-Linux-Support-for-Editor-$VERSION.pkg"
