@@ -3,26 +3,34 @@
 project="Test-CI-LFS"
 
 echo "Attempting to build $project for Windows"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
-  -batchmode \
-  -nographics \
-  -silent-crashes \
-  -logFile $(pwd)/unity.log \
-  -projectPath $(pwd) \
-  -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
-  -quit
+/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe \
+-projectfiles \
+-project="C:\Source\PROJECT_NAME\PROJECT_NAME.uproject" \
+-game \
+-rocket \
+-progress
 
-echo " "
-echo "-----------------"
-echo " Logs from build "
-echo "-----------------"
-echo " "
-cat $(pwd)/unity.log
-echo " "
-echo "-----------------"
-echo "       END       "
-echo "-----------------"
-echo " "
+#echo "Attempting to build $project for Windows"
+#/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+#  -batchmode \
+#  -nographics \
+#  -silent-crashes \
+#  -logFile $(pwd)/unity.log \
+#  -projectPath $(pwd) \
+#  -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
+#  -quit
+#
+#echo " "
+#echo "-----------------"
+#echo " Logs from build "
+#echo "-----------------"
+#echo " "
+#cat $(pwd)/unity.log
+#echo " "
+#echo "-----------------"
+#echo "       END       "
+#echo "-----------------"
+#echo " "
 
 #echo "Attempting to build $project for OS X"
 #/Applications/Unity/Unity.app/Contents/MacOS/Unity \

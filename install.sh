@@ -11,21 +11,14 @@
 # - Haven't try to build project with Unreal Engine under command-line
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
-UE_INSTALL_DIR=/Applications/UnrealEngine
+UE_INSTALL_DIR=/UnrealEngine
 
-VS_BASE_URL=https://download.visualstudio.microsoft.com/download/pr/12221253
-VS_HASH=e64d79b40219aea618ce2fe10ebd5f0d
-VS_NAME="vs_BuildTools.exe"
-VS_INSTALL_DIR=/Applications/VisualStudio
-
-# Download the build tool
-curl -O `basename "$VS_NAME"` "$VS_BASE_URL/$VS_HASH/$VS_NAME"
-chmod +x ./$VS_NAME
-
-git clone -depth=1 $UE_REPOSITORY $UE_INSTALL_DIR
-sh $UE_INSTALL_DIR/GenerateProjectFiles.sh
-./$VS_NAME
-$UE_INSTALL_DIR/ UE$.sln
+pushd $UE_INSTALL_DIR
+git clone -depth=1 $UE_REPOSITORY
+sh ./Setup.sh
+sh ./GenerateProjectFiles.sh
+make
+popd
 
 ### Old Scripts ###
 #BASE_URL=https://download.unity3d.com/download_unity

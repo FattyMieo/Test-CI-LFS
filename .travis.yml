@@ -1,12 +1,13 @@
-language: objective-c
-osx_image: xcode9.3
+language: generic
+os: linux
 rvm:
 - 2.2
 before_install:
 - chmod a+x ./install.sh
-- chmod a+x ./build.sh
 install:
 - ./install.sh
+before_script:
+- chmod a+x ./build.sh
 script:
 - ./build.sh
 deploy:
