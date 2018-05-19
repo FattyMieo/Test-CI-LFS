@@ -12,11 +12,14 @@
 
 UE_REPOSITORY=https://github.com/EpicGames/UnrealEngine.git
 UE_INSTALL_DIR=~/UnrealEngine
+UE_VERSION=4.19.2-release
 
 mkdir -p $UE_INSTALL_DIR
 
-pushd $UE_INSTALL_DIR
-git clone --depth=1 --progress $UE_REPOSITORY $UE_INSTALL_DIR
+git clone --depth=50 $UE_REPOSITORY $UE_INSTALL_DIR
+pushd "$UE_INSTALL_DIR.git"
+git fetch --all --tags --prune
+git checkout tags/$UE_VERSION -b release
 ./Setup.sh
 ./GenerateProjectFiles.sh
 make
