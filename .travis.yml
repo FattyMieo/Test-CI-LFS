@@ -3,6 +3,9 @@ os: linux
 rvm:
 - 2.2
 sudo: required
+addons:
+    apt:
+      update: true
 before_install:
 - chmod a+x ./install.sh
 - echo -e "machine github.com\n  login $GITHUB_OAUTH_TOKEN" >> ~/.netrc
