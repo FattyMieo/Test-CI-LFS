@@ -12,12 +12,11 @@
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
 
-pushd /UnrealEngine
+cd /UnrealEngine
 git clone -depth=1 $UE_REPOSITORY
 sh ./Setup.sh
 sh ./GenerateProjectFiles.sh
 make
-popd
 
 ### Old Scripts ###
 #BASE_URL=https://download.unity3d.com/download_unity

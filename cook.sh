@@ -2,19 +2,16 @@
 
 project="TestCILFS"
 
-echo "Building $project ..."
-if [ ! -d "$(pwd)/Release/$project" ]
-then mkdir $(pwd)/Release/$project
-fi
+echo "Cooking $project ..."
 /UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
 BuildCookRun \
 -project="$(pwd)/$project.uproject" \
--nop4 \
+-noP4 \
 -platform=Win64 \
 -clientconfig=Development \
 -cook \
 -allmaps \
--build \
+-NoCompile \
 -stage \
 -pak \
 -archive \
