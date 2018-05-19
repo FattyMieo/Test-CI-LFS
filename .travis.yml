@@ -4,6 +4,7 @@ rvm:
 - 2.2
 sudo: required
 dist: trusty
+mono: latest
 addons:
     apt:
       update: true
