@@ -1,14 +1,57 @@
 #! /bin/sh
 
-project="Test-CI-LFS"
+project="TestCILFS"
 
 echo "Attempting to build $project for Windows"
+
+echo "Preparing $project ..."
 /UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe \
 -projectfiles \
--project="C:\Source\PROJECT_NAME\PROJECT_NAME.uproject" \
+-project="$(pwd)/$project.uproject" \
 -game \
 -rocket \
 -progress
+
+echo "Compiling Scripts ..."
+msbuild "$(pwd)/$project.sln" /t:build /p:Platform=Win64;verbosity=diagnostic
+
+echo "Building $project ..."
+if [ ! -d "$(pwd)/Release/$project" ]
+then mkdir $(pwd)/Release/$project
+fi
+/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
+BuildCookRun \
+-project="$(pwd)/$project.uproject" \
+-nop4 \
+-platform=Win64 \
+-clientconfig=Development \
+-cook \
+-allmaps \
+-build \
+-stage \
+-pak \
+-archive \
+-archivedirectory="$(pwd)/Release/$project"
+
+echo "Cooking $project ..."
+/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
+BuildCookRun \
+-project="$(pwd)/$project.uproject" \
+-noP4 \
+-platform=Win64 \
+-clientconfig=Development \
+-cook \
+-allmaps \
+-NoCompile \
+-stage \
+-pak \
+-archive \
+-archivedirectory="$(pwd)/Release/$project"
+
+echo "Attempting to zip builds ..."
+pushd ./Release
+zip -r $project.zip ./*
+popd
 
 #echo "Attempting to build $project for Windows"
 #/Applications/Unity/Unity.app/Contents/MacOS/Unity \
@@ -76,12 +119,12 @@ echo "Attempting to build $project for Windows"
 #echo "-----------------"
 #echo " "
 
-echo "Attempting to zip builds"
-pushd ./Build
-zip -r $project.zip ./windows/*
+#echo "Attempting to zip builds"
+#pushd ./Build
+#zip -r $project.zip ./windows/*
 #zip -r $project.zip ./osx/*
 #zip -r $project.zip ./linux/*
-popd
+#popd
 
 #zip -r $(pwd)/Build/windows.zip $(pwd)/Build/windows/
 #zip -r $(pwd)/Build/mac.zip $(pwd)/Build/osx/

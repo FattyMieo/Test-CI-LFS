@@ -11,9 +11,8 @@
 # - Haven't try to build project with Unreal Engine under command-line
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
-UE_INSTALL_DIR=/UnrealEngine
 
-pushd $UE_INSTALL_DIR
+pushd /UnrealEngine
 git clone -depth=1 $UE_REPOSITORY
 sh ./Setup.sh
 sh ./GenerateProjectFiles.sh

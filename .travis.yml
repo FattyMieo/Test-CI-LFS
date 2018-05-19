@@ -13,7 +13,7 @@ script:
 deploy:
   provider: releases
   api_key: "$GITHUB_OAUTH_TOKEN"
-  file: "$(pwd)/Build/Test-Unity-CI.zip"
+  file: "$(pwd)/Release/TestUnityCI.zip"
   skip_cleanup: true
   on:
     tags: true
