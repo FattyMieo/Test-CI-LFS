@@ -10,7 +10,7 @@
 # - Cannot figure out how to get and use VS Build Tools (in OS X it cannot run .exe)
 # - Haven't try to build project with Unreal Engine under command-line
 
-UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
+UE_REPOSITORY=https://github.com/EpicGames/UnrealEngine.git
 
 mkdir -p ~/UnrealEngine
 
