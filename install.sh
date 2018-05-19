@@ -17,7 +17,7 @@ UE_VERSION=4.19.2-release
 mkdir -p $UE_INSTALL_DIR
 
 pushd $UE_INSTALL_DIR
-git clone --branch $UE_VERSION --depth 1 $UE_REPOSITORY $UE_INSTALL_DIR
+git clone -c advice.detachedHead=false --branch $UE_VERSION --depth 1 $UE_REPOSITORY $UE_INSTALL_DIR
 ./Setup.sh
 ./GenerateProjectFiles.sh
 make
