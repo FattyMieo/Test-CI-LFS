@@ -9,6 +9,7 @@
 # https://docs.travis-ci.com/user/private-dependencies/#API-Token
 
 language: generic
+group: travis_latest
 os: linux
 sudo: required
 dist: trusty
