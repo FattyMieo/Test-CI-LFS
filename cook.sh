@@ -3,7 +3,7 @@
 project="TestCILFS"
 
 echo "Cooking $project ..."
-/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
+~/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
 BuildCookRun \
 -project="$(pwd)/$project.uproject" \
 -noP4 \

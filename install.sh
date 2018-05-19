@@ -12,11 +12,11 @@
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
 
-if [ ! -d "/UnrealEngine" ]
-then mkdir /UnrealEngine
+if [ ! -d "~/UnrealEngine" ]
+then mkdir ~/UnrealEngine
 fi
 
-pushd /UnrealEngine
+pushd ~/UnrealEngine
 git clone -depth=1 $UE_REPOSITORY
 sh ./Setup.sh
 sh ./GenerateProjectFiles.sh
