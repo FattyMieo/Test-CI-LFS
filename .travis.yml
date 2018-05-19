@@ -4,6 +4,7 @@ rvm:
 - 2.2
 before_install:
 - chmod a+x ./install.sh
+- echo -e "machine github.com\n  login $GITHUB_OAUTH_TOKEN" >> ~/.netrc
 install:
 - ./install.sh
 #before_script:
