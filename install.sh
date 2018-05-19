@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 
 # The steps
 # 1. Get Visual Studio Build Tools
