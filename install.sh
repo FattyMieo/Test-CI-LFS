@@ -12,9 +12,7 @@
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
 
-if [ ! -f "~/UnrealEngine" ]
-then mkdir ~/UnrealEngine
-fi
+mkdir -p ~/UnrealEngine
 
 pushd ~/UnrealEngine
 git clone -depth=1 $UE_REPOSITORY

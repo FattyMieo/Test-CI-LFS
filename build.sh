@@ -3,9 +3,8 @@
 project="TestCILFS"
 
 echo "Building $project ..."
-if [ ! -f "$(pwd)/Release/$project" ]
-then mkdir $(pwd)/Release/$project
-fi
+mkdir -p $(pwd)/Release/$project
+
 ~/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \
 BuildCookRun \
 -project="$(pwd)/$project.uproject" \
