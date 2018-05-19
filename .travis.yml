@@ -10,8 +10,6 @@
 
 language: generic
 os: linux
-rvm:
-- 2.2
 sudo: required
 dist: trusty
 mono: latest
