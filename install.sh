@@ -17,8 +17,8 @@ mkdir -p $UE_INSTALL_DIR
 
 pushd $UE_INSTALL_DIR
 git clone --depth=1 --progress $UE_REPOSITORY $UE_INSTALL_DIR
-sh ./Setup.sh
-sh ./GenerateProjectFiles.sh
+./Setup.sh
+./GenerateProjectFiles.sh
 make
 popd
 
