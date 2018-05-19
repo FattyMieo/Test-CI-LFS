@@ -9,9 +9,11 @@
 # https://docs.travis-ci.com/user/private-dependencies/#API-Token
 
 language: generic
-os: linux
-sudo: required
-dist: trusty
+os: osx
+osx_image: xcode9.3
+#os: linux
+#sudo: required
+#dist: trusty
 mono: latest
 #addons:
 #    apt:
