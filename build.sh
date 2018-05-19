@@ -3,7 +3,7 @@
 project="TestCILFS"
 
 echo "Building $project ..."
-if [ ! -d "$(pwd)/Release/$project" ]
+if [ ! -f "$(pwd)/Release/$project" ]
 then mkdir $(pwd)/Release/$project
 fi
 ~/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh \

@@ -12,7 +12,7 @@
 
 UE_REPOSITORY=https://github.com/FattyMieo/UnrealEngine.git
 
-if [ ! -d "~/UnrealEngine" ]
+if [ ! -f "~/UnrealEngine" ]
 then mkdir ~/UnrealEngine
 fi
 
