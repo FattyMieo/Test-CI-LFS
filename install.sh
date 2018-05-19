@@ -11,11 +11,12 @@
 # - Haven't try to build project with Unreal Engine under command-line
 
 UE_REPOSITORY=https://github.com/EpicGames/UnrealEngine.git
+UE_INSTALL_DIR=~/UnrealEngine
 
-mkdir -p ~/UnrealEngine
+mkdir -p $UE_INSTALL_DIR
 
-pushd ~/UnrealEngine
-git clone --depth=1 $UE_REPOSITORY
+pushd $UE_INSTALL_DIR
+git clone --depth=1 --progress $UE_REPOSITORY $UE_INSTALL_DIR
 sh ./Setup.sh
 sh ./GenerateProjectFiles.sh
 make
